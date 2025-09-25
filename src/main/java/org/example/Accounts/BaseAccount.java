@@ -34,16 +34,10 @@ public class BaseAccount {
         return owner;
     }
 
-    public void AddBalance(double balance) {
-        this.balance += balance;
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
-    public void DecreaseBalance(double balance) {
-        if(this.balance - balance < 0) {
-            throw new IllegalArgumentException("Balance cannot be negative");
-        }
-        this.balance -= balance;
-    }
 
     public BaseHuman GetOwner() {
         return owner;
