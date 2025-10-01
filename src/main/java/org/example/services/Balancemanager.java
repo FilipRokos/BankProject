@@ -12,7 +12,7 @@ public class Balancemanager {
         }
 
         public void decreaseBalance(BaseAccount account, double amount) {
-            if(Kontrola.kontrolavyberu(account,amount) == true)
+            if(Kontrola.kontrolavyberu(account,amount) == true && account.getBalance()>amount)
             {
                 account.setBalance(account.getBalance() - amount);
             }
