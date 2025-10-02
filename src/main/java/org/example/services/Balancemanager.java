@@ -1,8 +1,8 @@
 package org.example.services;
 import org.example.Accounts.BaseAccount;
-import org.example.services.kontrola;
+
 public class Balancemanager {
-        kontrola Kontrola = new kontrola();
+        Kontrola Kontrola = new Kontrola();
         public void addBalance(BaseAccount account, double amount) {
             if(Kontrola.kontrolavkladu(account,amount) == true)
                 {
