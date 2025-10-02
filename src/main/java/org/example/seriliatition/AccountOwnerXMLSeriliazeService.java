@@ -1,14 +1,15 @@
 package org.example.seriliatition;
-import org.example.people.AccountOwner;
+
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.example.people.BaseHuman;
 import org.example.people.seriliazition.AccountOwnerSeriliaze;
 import org.example.people.seriliazition.AccountOwnerSeriliazeFactory;
-import org.example.seriliatition.Serializetion;
 
 
 
 public class AccountOwnerXMLSeriliazeService implements Serializetion {
     AccountOwnerSeriliazeFactory factory = new AccountOwnerSeriliazeFactory();
+    private final XmlMapper xmlMapper = new XmlMapper();
 
     @Override
     public String serialize(Object accountOwner){
@@ -17,13 +18,13 @@ public class AccountOwnerXMLSeriliazeService implements Serializetion {
         }
 
         AccountOwnerSeriliaze accountOwnerSeriliaze = factory.createAccountOwnerSeriliaze((BaseHuman)accountOwner);
-        StringBuilder builder = new StringBuilder();
-        builder.append("<AccountOwner>");
-        builder.append("<uuid>").append(accountOwnerSeriliaze.uuid).append("</uuid>");
-        builder.append("<lastName>").append(accountOwnerSeriliaze.lastName).append("</lastName>");
-        builder.append("<firstName>").append(accountOwnerSeriliaze.firstName).append("</firstName>");
-        builder.append("</AccountOwner>");
-        return builder.toString();
+        try {
+            return xmlMapper.writeValueAsString(accountOwnerSeriliaze);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
     @Override
     public String deserialize(String accountOwner)
@@ -33,3 +34,10 @@ public class AccountOwnerXMLSeriliazeService implements Serializetion {
         return "";
     }
 }
+ /*StringBuilder builder = new StringBuilder();
+        builder.append("<AccountOwner>");
+        builder.append("<uuid>").append(accountOwnerSeriliaze.uuid).append("</uuid>");
+        builder.append("<lastName>").append(accountOwnerSeriliaze.lastName).append("</lastName>");
+        builder.append("<firstName>").append(accountOwnerSeriliaze.firstName).append("</firstName>");
+        builder.append("</AccountOwner>");
+        return builder.toString();*/
