@@ -23,11 +23,11 @@ public class AccountStorage {
     }
 
     public BaseAccount findAccountByCard(PaymentCard card) {
-        for (BaseAccount acc : accounts) {
-            if (acc instanceof BankAccountWithPaymentCard bankAcc) {
-                for (PaymentCard c : bankAcc.getPaymentCards()) {
-                    if (c.getCardNumber().equals(card.getCardNumber())) {
-                        return acc;
+        for (BaseAccount ac : accounts) {
+            if (ac instanceof BankAccountWithPaymentCard bankAcc) {
+                for (PaymentCard p : bankAcc.getPaymentCards()) {
+                    if (p.getCardNumber().equals(card.getCardNumber())) {
+                        return ac;
                     }
                 }
             }
