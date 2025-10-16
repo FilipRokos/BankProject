@@ -11,7 +11,7 @@ import org.example.people.Student;
 import org.example.Bankaccountnum;
 public class BankAccountFactorie {
 
-    public BankAccount createBankAccount(String uuid, AccountOwner owner) {
+   /* public BankAccount createBankAccount(String uuid, AccountOwner owner) {
         return new BankAccount(uuid,owner.getFirstName(),owner.getLastName());
     }
     public StudentBankAccount createStudentBankAccount(String uuid,double balance,Student owner) {
@@ -20,5 +20,5 @@ public class BankAccountFactorie {
     public SavingBankAccount createSavingBankAccount(String uuid,double balance,BaseHuman owner,double interestRate) {
         return new SavingBankAccount(uuid,balance,String.valueOf(Bankaccountnum.generator()),owner,interestRate);
     }
-
+*/
 }
