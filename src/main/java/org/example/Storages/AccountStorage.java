@@ -1,4 +1,4 @@
-package org.example.services;
+package org.example.Storages;
 
 import org.example.Accounts.BankAccountWithPaymentCard;
 import org.example.Accounts.BaseAccount;
@@ -22,7 +22,7 @@ public class AccountStorage {
         return accounts;
     }
 
-    public BaseAccount findAccountByCard(PaymentCard card) {
+    public BaseAccount findAccountByPaymentCard(PaymentCard card) {
         for (BaseAccount ac : accounts) {
             if (ac instanceof BankAccountWithPaymentCard bankAcc) {
                 for (PaymentCard p : bankAcc.getPaymentCards()) {

@@ -3,18 +3,12 @@ package org.example;
 
 import org.example.Accounts.BaseAccount;
 import org.example.Accounts.StudentBankAccount;
-import org.example.cards.PaymentCard;
 import org.example.cards.PaymentCardFactory;
-import org.example.people.AccountOwner;
 import org.example.people.BaseHuman;
 import org.example.people.Student;
-import org.example.seriliatition.AccountOwnerJsonSeriliazeService;
-import org.example.seriliatition.AccountOwnerXMLSeriliazeService;
-import org.example.services.AccountStorage;
+import org.example.Storages.AccountStorage;
 import org.example.services.Balancemanager;
 import org.example.Accounts.BankAccountWithPaymentCard;
-import org.example.Accounts.BankAccountWithPaymentCard;
-import org.example.services.PayCardService;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -25,7 +19,6 @@ public class Main {
         BankAccountWithPaymentCard cardAccount = new BankAccountWithPaymentCard("745600",10000,String.valueOf(Bankaccountnum.generator()),(new BaseHuman("745600","Vojta","Kaška")));
         Balancemanager balance_manager = new Balancemanager();
         PaymentCardFactory  payment_card_factory = new PaymentCardFactory();
-        PayCardService payCardService = new PayCardService();
         AccountStorage accountStorage = new AccountStorage();
         cardAccount.addPaymentCard(payment_card_factory.create());
         accountStorage.addAccount(cardAccount);

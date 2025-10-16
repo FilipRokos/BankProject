@@ -1,11 +1,12 @@
 package org.example.services;
 import org.example.Accounts.BaseAccount;
+import org.example.Storages.AccountStorage;
 import org.example.cards.PaymentCard;
 
 public class Balancemanager {
         Kontrola Kontrola = new Kontrola();
-        public boolean cardTransaction(AccountStorage accountStorage, PaymentCard paymentcard,double amount, boolean action) {
-            BaseAccount account = accountStorage.findAccountByCard(paymentcard);
+        public boolean cardTransaction(AccountStorage accountStorage, PaymentCard paymentcard, double amount, boolean action) {
+            BaseAccount account = accountStorage.findAccountByPaymentCard(paymentcard);
             if (account == null) return false;
 
             if (action) {
