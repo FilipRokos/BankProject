@@ -1,6 +1,7 @@
 package org.example.factories;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import org.example.Accounts.BankAccount;
 import org.example.Accounts.BaseAccount;
 import org.example.Accounts.SavingBankAccount;
@@ -11,6 +12,7 @@ import org.example.people.AccountOwner;
 import org.example.people.BaseHuman;
 import org.example.people.Student;
 import org.example.Bankaccountnum;
+@Singleton
 public class BankAccountFactorie {
     @Inject
     public AccountStorage accountStorage;
@@ -20,6 +22,7 @@ public class BankAccountFactorie {
     }
     public BankAccount createBankAccount(String uuid, BaseHuman owner,double balanc) {
         BankAccount acc = new BankAccount(uuid,balanc,String.valueOf(Bankaccountnum.generator()),owner);
+        System.out.println("idhjkjskdsmnds");
         accountStorage.addAccount(acc);
         return acc;
     }

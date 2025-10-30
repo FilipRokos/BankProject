@@ -28,7 +28,8 @@ public class App {
     AccountOwnerJsonSeriliazeService accountOwnerJsonSeriliazeService;
     @Inject
     Logger logger;
-
+    @Inject
+    AccountStorage accountStorage;
 
     public void run()
     {
@@ -39,6 +40,15 @@ public class App {
 
         BankAccount acc = bankAccountFactorie.createBankAccount("7456",(new BaseHuman("7456","Honza","Va")),1000);
         System.out.println("Bank account created");
+        BankAccount accc = bankAccountFactorie.createBankAccount("74560",(new BaseHuman("74560","onza","Va")),1000);
+
         acc.addPaymentCard(paymentCardFactory.create());
+        if (accountStorage.getAccounts() == null)
+        {
+            System.out.println("Account storage is null");
+        }
+        else {
+            System.out.println(accountStorage.getAccounts().size());
+        }
     }
 }
