@@ -1,13 +1,19 @@
 package org.example.cards;
 
+import jakarta.inject.Inject;
+
 import java.util.UUID;
 
 public class PaymentCardFactory {
+    @Inject
     private PaymentCardNumberGenerator paymentCardNumberGenerator;
+    @Inject
     private PaymentCardCvvGenerator paymentCardCvvGenerator;
+    @Inject
     private PaymentCardPinGenerator paymentCardPinGenerator;
+    @Inject
     private PaymentCardExpireDateGenerator paymentCardExpireDateGenerator;
-
+    @Inject
     public PaymentCardFactory(PaymentCardNumberGenerator paymentCardNumberGenerator, PaymentCardCvvGenerator paymentCardCvvGenerator, PaymentCardPinGenerator paymentCardPinGenerator, PaymentCardExpireDateGenerator paymentCardExpireDateGenerator) {
         this.paymentCardNumberGenerator = paymentCardNumberGenerator;
         this.paymentCardCvvGenerator = paymentCardCvvGenerator;

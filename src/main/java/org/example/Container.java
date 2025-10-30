@@ -8,7 +8,7 @@ import org.example.services.Balancemanager;
 import org.example.services.Logger;
 
 public class Container {
-    public PaymentCardFactory paymentCardFactory;
+    /*public PaymentCardFactory paymentCardFactory;
     public PaymentCardNumberGenerator paymentCardNumberGenerator;
     public PaymentCardCvvGenerator paymentCardCvvGenerator;
     public PaymentCardPinGenerator paymentCardPinGenerator;
@@ -35,7 +35,7 @@ public class Container {
         this.logger = new Logger();
 
         this.balancemanager = new Balancemanager();
-
-        this.bankAccountFactorie = new BankAccountFactorie(accountStorage);
     }
+*/
+
 }

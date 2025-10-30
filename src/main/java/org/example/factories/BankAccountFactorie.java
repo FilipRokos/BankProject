@@ -1,5 +1,6 @@
 package org.example.factories;
 
+import com.google.inject.Inject;
 import org.example.Accounts.BankAccount;
 import org.example.Accounts.BaseAccount;
 import org.example.Accounts.SavingBankAccount;
@@ -11,8 +12,9 @@ import org.example.people.BaseHuman;
 import org.example.people.Student;
 import org.example.Bankaccountnum;
 public class BankAccountFactorie {
-
+    @Inject
     public AccountStorage accountStorage;
+    @Inject
     public BankAccountFactorie(AccountStorage accountStorage) {
         this.accountStorage = accountStorage;
     }
