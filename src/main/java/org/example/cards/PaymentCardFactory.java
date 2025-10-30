@@ -3,10 +3,17 @@ package org.example.cards;
 import java.util.UUID;
 
 public class PaymentCardFactory {
-    private PaymentCardNumberGenerator paymentCardNumberGenerator = new PaymentCardNumberGenerator();
-    private PaymentCardCvvGenerator paymentCardCvvGenerator = new PaymentCardCvvGenerator();
-    private PaymentCardPinGenerator paymentCardPinGenerator = new PaymentCardPinGenerator();
-    private PaymentCardExpireDateGenerator paymentCardExpireDateGenerator = new PaymentCardExpireDateGenerator();
+    private PaymentCardNumberGenerator paymentCardNumberGenerator;
+    private PaymentCardCvvGenerator paymentCardCvvGenerator;
+    private PaymentCardPinGenerator paymentCardPinGenerator;
+    private PaymentCardExpireDateGenerator paymentCardExpireDateGenerator;
+
+    public PaymentCardFactory(PaymentCardNumberGenerator paymentCardNumberGenerator, PaymentCardCvvGenerator paymentCardCvvGenerator, PaymentCardPinGenerator paymentCardPinGenerator, PaymentCardExpireDateGenerator paymentCardExpireDateGenerator) {
+        this.paymentCardNumberGenerator = paymentCardNumberGenerator;
+        this.paymentCardCvvGenerator = paymentCardCvvGenerator;
+        this.paymentCardPinGenerator = paymentCardPinGenerator;
+        this.paymentCardExpireDateGenerator = paymentCardExpireDateGenerator;
+    }
 
     public PaymentCard create() {
         String uuid = UUID.randomUUID().toString();

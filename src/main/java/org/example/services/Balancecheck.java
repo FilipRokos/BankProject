@@ -2,8 +2,8 @@ package org.example.services;
 
 import org.example.Accounts.BaseAccount;
 
-public class Kontrola {
-    public boolean kontrolavkladu(BaseAccount account, double amount){
+public class Balancecheck {
+    public boolean depositcheck(BaseAccount account, double amount){
         if (amount < 0) {
             throw new IllegalArgumentException("oprav jsi to ");
         }
@@ -13,7 +13,7 @@ public class Kontrola {
         }
         return  true;
     }
-    public boolean kontrolavyberu(BaseAccount account,double amount){
+    public boolean withdrawcheck(BaseAccount account, double amount){
         if (account.getBalance() - amount < 0) {
             throw new IllegalArgumentException("tolik penez nemaš ");
         }
