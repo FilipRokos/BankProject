@@ -12,10 +12,14 @@ import org.example.people.AccountOwner;
 import org.example.people.BaseHuman;
 import org.example.people.Student;
 import org.example.Bankaccountnum;
+import org.example.services.IntrestNextMonthDate;
+
 @Singleton
 public class BankAccountFactorie {
     @Inject
     public AccountStorage accountStorage;
+    @Inject
+    IntrestNextMonthDate nextMonthDate;
     @Inject
     public BankAccountFactorie(AccountStorage accountStorage) {
         this.accountStorage = accountStorage;
@@ -32,7 +36,7 @@ public class BankAccountFactorie {
         return acc;
     }
     public SavingBankAccount createSavingBankAccount(String uuid,double balance,BaseHuman owner,double interestRate) {
-        SavingBankAccount acc = new SavingBankAccount(uuid,balance,String.valueOf(Bankaccountnum.generator()),owner,interestRate);
+        SavingBankAccount acc = new SavingBankAccount(uuid,balance,String.valueOf(Bankaccountnum.generator()),owner,interestRate,nextMonthDate.NextMonthDate());
         accountStorage.addAccount(acc);
         return acc;
     }

@@ -11,11 +11,8 @@ import java.util.List;
 @Singleton
 public class AccountStorage {
 
-    private final List<BaseAccount> accounts;
-    @Inject
-    public AccountStorage() {
-        this.accounts = new ArrayList<>();
-    }
+    private final List<BaseAccount> accounts = new ArrayList<>();
+
 
     public void addAccount(BaseAccount account) {
         System.out.println("adding account ");

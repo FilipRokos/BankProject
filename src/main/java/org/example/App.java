@@ -1,19 +1,16 @@
 package org.example;
 import com.google.inject.Singleton;
 import jakarta.inject.Inject;
-import org.example.Accounts.BankAccount;
-import org.example.Accounts.BaseAccount;
-import org.example.Accounts.StudentBankAccount;
+import org.example.Accounts.*;
 import org.example.cards.PaymentCardFactory;
 import org.example.factories.BankAccountFactorie;
+import org.example.fasada.SavingBankAccountinterstCalc;
 import org.example.people.BaseHuman;
 import org.example.people.Student;
 import org.example.Storages.AccountStorage;
 import org.example.seriliatition.AccountOwnerJsonSeriliazeService;
-import org.example.services.Balancemanager;
-import org.example.Accounts.BankAccountWithPaymentCard;
+import org.example.services.*;
 import org.example.App;
-import org.example.services.Logger;
 
 @Singleton
 public class App {
@@ -30,18 +27,25 @@ public class App {
     Logger logger;
     @Inject
     AccountStorage accountStorage;
-
+    @Inject
+    SavingBankAccountinterstCalc savingBankAccountinterstCalc;
+    @Inject
+    CronIntrest cronIntrest;
+    @Inject
+    IntrestCalc intrestCalc;
+    @Inject
+    IntrestNextMonthDate intrestNextMonthDate;
     public void run()
     {
 
         BaseAccount studentskyAccount = new StudentBankAccount("895",1000,String.valueOf(Bankaccountnum.generator()), (new Student("76543456","Filip", "Rokos", "Delta")));
         BaseAccount account = new BaseAccount("7456",1000,String.valueOf(Bankaccountnum.generator()),(new BaseHuman("7456","Honza","Va")));
         BankAccountWithPaymentCard cardAccount = new BankAccountWithPaymentCard("745600",10000,String.valueOf(Bankaccountnum.generator()),(new BaseHuman("745600","Vojta","Kaška")));
-
+        SavingBankAccount save = bankAccountFactorie.createSavingBankAccount("98789",876,(new BaseHuman("98789","vojta","kaška")),3.06);
         BankAccount acc = bankAccountFactorie.createBankAccount("7456",(new BaseHuman("7456","Honza","Va")),1000);
         System.out.println("Bank account created");
         BankAccount accc = bankAccountFactorie.createBankAccount("74560",(new BaseHuman("74560","onza","Va")),1000);
-
+        cronIntrest.start();
         acc.addPaymentCard(paymentCardFactory.create());
         if (accountStorage.getAccounts() == null)
         {
@@ -49,6 +53,13 @@ public class App {
         }
         else {
             System.out.println(accountStorage.getAccounts().size());
+        }
+        while (true) {
+            try {
+                Thread.sleep(10000); // jen uspíme hlavní vlákno
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
