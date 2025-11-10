@@ -35,8 +35,11 @@ public class App {
     IntrestCalc intrestCalc;
     @Inject
     IntrestNextMonthDate intrestNextMonthDate;
+    @Inject
+    CronTransactionDetails cronTransactionDetails;
     public void run()
     {
+
 
         BaseAccount studentskyAccount = new StudentBankAccount("895",1000,String.valueOf(Bankaccountnum.generator()), (new Student("76543456","Filip", "Rokos", "Delta")));
         BaseAccount account = new BaseAccount("7456",1000,String.valueOf(Bankaccountnum.generator()),(new BaseHuman("7456","Honza","Va")));
@@ -44,8 +47,10 @@ public class App {
         SavingBankAccount save = bankAccountFactorie.createSavingBankAccount("98789",876,(new BaseHuman("98789","vojta","kaška")),3.06);
         BankAccount acc = bankAccountFactorie.createBankAccount("7456",(new BaseHuman("7456","Honza","Va")),1000);
         System.out.println("Bank account created");
+        balancemanager.addBalance(acc,1000);
         BankAccount accc = bankAccountFactorie.createBankAccount("74560",(new BaseHuman("74560","onza","Va")),1000);
         cronIntrest.start();
+        cronTransactionDetails.start();
         acc.addPaymentCard(paymentCardFactory.create());
         if (accountStorage.getAccounts() == null)
         {
@@ -61,5 +66,6 @@ public class App {
                 e.printStackTrace();
             }
         }
+
     }
 }

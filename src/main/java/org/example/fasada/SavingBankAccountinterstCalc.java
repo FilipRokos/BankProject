@@ -7,6 +7,7 @@ import org.example.Accounts.SavingBankAccount;
 import org.example.Storages.AccountStorage;
 import org.example.services.IntrestCalc;
 import org.example.services.IntrestNextMonthDate;
+import org.example.services.TransactionDater;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -19,6 +20,8 @@ public class SavingBankAccountinterstCalc {
     IntrestNextMonthDate intrestNextMonthDate;
     @Inject
     IntrestCalc intrestCalc;
+    @Inject
+    TransactionDater transactionDater;
     public Runnable calc()
     {
         return () -> {
@@ -32,7 +35,7 @@ public class SavingBankAccountinterstCalc {
                         acc.nextInterestDate = intrestNextMonthDate.NextMonthDate();
                         intrestCalc.increase(acc);
                         System.out.println("------------------------");
-                        System.out.println(acc.getBalance());
+                        System.out.println(acc.getBalance()+ "  " + LocalDateTime.now());
                         System.out.println("------------------------");
                     }
                 }

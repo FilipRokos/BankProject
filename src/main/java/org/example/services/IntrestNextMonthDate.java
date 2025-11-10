@@ -7,6 +7,6 @@ import java.time.temporal.ChronoUnit;
 public class IntrestNextMonthDate {
     public LocalDateTime NextMonthDate(){
         /*return LocalDate.now().plusMonths(1);*/
-        return LocalDateTime.now().plusSeconds(20);
+        return LocalDateTime.now().plusSeconds(19);
     }
 }

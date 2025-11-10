@@ -1,27 +1,27 @@
 package org.example.services;
 
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import jakarta.inject.Inject;
-import org.example.fasada.SavingBankAccountinterstCalc;
+import org.example.TransactionLogger.ExportTransactionFile;
+import org.example.fasada.TransactionDatas;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 @Singleton
-public class CronIntrest {
-
+public class CronTransactionDetails {
     @Inject
-    SavingBankAccountinterstCalc savingBankAccountinterstCalc;
+    TransactionDatas datas;
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
 
     public void start() {
         scheduler.scheduleAtFixedRate(
-                () -> savingBankAccountinterstCalc.calc().run()
+                () -> datas.TransactionDetails().run()
                 ,
                 0,
-                20,
-                TimeUnit.SECONDS
+                5,
+                TimeUnit.MINUTES
         );
 
     }
