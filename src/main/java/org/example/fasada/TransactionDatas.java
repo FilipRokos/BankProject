@@ -26,6 +26,7 @@ public class TransactionDatas {
                     System.out.println(a);
                     a= a-1;
                 }
+
                 account.dailyTransactionsReset();
 
           }
