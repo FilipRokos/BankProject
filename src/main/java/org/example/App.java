@@ -46,6 +46,7 @@ public class App {
         BankAccountWithPaymentCard cardAccount = new BankAccountWithPaymentCard("745600",10000,String.valueOf(Bankaccountnum.generator()),(new BaseHuman("745600","Vojta","Kaška")));
         SavingBankAccount save = bankAccountFactorie.createSavingBankAccount("98789",876,(new BaseHuman("98789","vojta","kaška")),3.06);
         BankAccount acc = bankAccountFactorie.createBankAccount("7456",(new BaseHuman("7456","Honza","Va")),1000);
+        SavingBankAccount ja = bankAccountFactorie.createSavingBankAccount("9789",1,(new BaseHuman("9789","ja","ja")),100*12);
         System.out.println("Bank account created");
         balancemanager.addBalance(acc,1000);
         BankAccount accc = bankAccountFactorie.createBankAccount("74560",(new BaseHuman("74560","onza","Va")),1000);
